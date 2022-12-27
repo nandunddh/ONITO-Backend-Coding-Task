@@ -67,7 +67,6 @@ exports.top_rated_movies= async (req,res)=>{
     try {
         
         mysqlconnection.query("SELECT movies.tconst AS tconst,movies.primaryTitle AS primaryTitle,movies.genres AS genres, ratings.averageRating AS averageRating FROM movies JOIN ratings ON movies.tconst = ratings.tconst WHERE averageRating > 6.0 ORDER BY averageRating",(err,rows,fields)=>{
-            console.log("first",rows);
             if(err){
                 return  success({res,msg:err.message,data:{}, status:500});
 
